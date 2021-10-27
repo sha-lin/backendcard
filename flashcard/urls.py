@@ -25,7 +25,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="Test description",
         terms_of_service="https://www.ourapp.com/policies/terms/",
-        contact=openapi.Contact(email="contact@expenses.local"),
+        contact=openapi.Contact(email="contact@flashcard.local"),
         license=openapi.License(name="Test License"),
     ),
     public=True,
@@ -38,7 +38,7 @@ urlpatterns = [
     # path('social_auth/', include(('social_auth.urls', 'social_auth'),
     #                              namespace="social_auth")),
     # path('subjects/', include('subjects.urls')),
-    # path('income/', include('income.urls')),
+    path('subjects/', include('subjects.urls')),
     path('', schema_view.with_ui('swagger',
                                  cache_timeout=0), name='schema-swagger-ui'),
 
