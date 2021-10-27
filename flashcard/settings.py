@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,8 +93,10 @@ WSGI_APPLICATION = 'flashcard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'card',
+        'USER': 'shalin',
+    'PASSWORD':'Chepkoech03',
     }
 }
 
@@ -155,3 +158,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'shalin.rono@student.moringaschool.com'
 EMAIL_HOST_PASSWORD = 'Chepkoech1234'
+
+django_heroku.settings(locals())

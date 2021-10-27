@@ -33,7 +33,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class EmailVerificationSerializer(serializers.ModelSerializer):
-    token = serializers.CharField(max_length=555)
+    token = serializers.CharField(max_length=1000)
 
     class Meta:
         model = User
