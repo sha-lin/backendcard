@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Subject, Notes
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
-# from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -145,3 +145,16 @@ class LogoutSerializer(serializers.Serializer):
 
         except TokenError:
             self.fail('bad_token')
+
+# Subject serializer
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = ("id","name", "created_at", "updated_at")
+
+
+# Notes serializer
+class NotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notes
+        fields = ("id","user", "title", "description", "subject", "created_at", "updated_at")
